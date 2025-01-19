@@ -205,14 +205,25 @@ You can customize or remove these tests in the `__main__` section.
 
 ## References and Acknowledgments
 
-- [Meta AI: Massively Multilingual Speech (MMS)](https://ai.facebook.com/research/publications/massively-multilingual-speech)
-- [Meta AI: No Language Left Behind (NLLB)](https://ai.facebook.com/research/no-language-left-behind/)
+- [Meta AI: Massively Multilingual Speech (MMS)](https://ai.meta.com/blog/multilingual-model-speech-recognition/)
+- [Meta AI: No Language Left Behind (NLLB)](https://ai.meta.com/research/no-language-left-behind/)
 - Hugging Face model repositories:
   - [facebook/mms-lid-4017](https://huggingface.co/facebook/mms-lid-4017)
   - [facebook/mms-1b-all](https://huggingface.co/facebook/mms-1b-all)
   - [facebook/nllb-200-distilled-600M](https://huggingface.co/facebook/nllb-200-distilled-600M)
 - [Ray Serve](https://docs.ray.io/en/latest/serve/index.html) for serving the FastAPI application at scale.
 - [ISO 639-3 Language Codes](https://en.wikipedia.org/wiki/ISO_639-3)
+
+### Also See:
+
+- [Unicef - Why Mother Tongue Education holds the key to unlocking every child's potential ](https://www.unicef.org/india/stories/why-mother-tongue-education-holds-key-unlocking-every-childs-potential)
+- [Letter to the UK Parliament By Lucy-Crompton Reid (Chief Executive, Wikimedia UK)](https://committees.parliament.uk/writtenevidence/119180/pdf/)
+- [Unesco The world atlas of languages](https://en.wal.unesco.org/world-atlas-languages)
+- [Unesco World Atlas of Languages - Summary Document](https://unesdoc.unesco.org/ark:/48223/pf0000380132/PDF/380132eng.pdf.multi)
+- [Atlas of the World’s Languages in Danger](https://unesdoc.unesco.org/in/documentViewer.xhtml?v=2.1.196&id=p::usmarcdef_0000187026&file=/in/rest/annotationSVC/DownloadWatermarkedAttachment/attach_import_70c069f5-be69-478d-80ca-47a6ce68c154%3F_%3D187026eng.pdf&locale=en&multi=true&ark=/ark:/48223/pf0000187026/PDF/187026eng.pdf)
+- [CIA world factbook - Languages](https://www.cia.gov/the-world-factbook/field/languages/)
+- [UCLA Phonetics Lab Data](http://archive.phonetics.ucla.edu/main2.htm)
+- [ISO 639-3 Criticism](https://en.wikipedia.org/wiki/ISO_639-3#Criticism)
 
 If you use or build upon this repository, please consider citing or mentioning the original models and referencing Meta’s relevant research.
 
