@@ -470,6 +470,7 @@ def run_smoke_test_text(
     :param description: A label describing the text content
     """
     print(f"\n--- SMOKE TEST: {description} ---")
+    print("Translating text:", text)
     headers = {"accept": "application/json"}
     data = {"text": text, "src_lang": "eng", "tgt_lang": tgt_lang}
     resp = httpx.post(f"http://127.0.0.1:8000{endpoint}", headers=headers, json=data)
