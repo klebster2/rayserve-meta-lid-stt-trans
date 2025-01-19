@@ -66,24 +66,6 @@ def load_audio(file_bytes: bytes, sampling_rate: int) -> np.ndarray:
     return np.frombuffer(out, dtype=np.int16).astype(np.float32) / 32768.0
 
 
-def audio_processor(audio_bytes: bytes, sampling_rate: int = 16000) -> np.ndarray:
-    """
-    Generic audio processor that converts bytes into a float32 NumPy array at the given sampling rate.
-
-    >>> import numpy as np
-    >>> # We won't do a real decode here in the doctest, just check call shape
-    >>> result = audio_processor(b"fake_data")  # doctest: +SKIP
-    >>> isinstance(result, np.ndarray)  # doctest: +SKIP
-    True
-    """
-    try:
-        audio_array = load_audio(audio_bytes, sampling_rate)
-    except Exception as e:
-        raise ValueError(f"Error loading audio file: {str(e)}") from e
-
-    return audio_array
-
-
 class BaseDeployment(
     abc.ABC
 ):  # pylint: disable=too-few-public-methods,missing-class-docstring
@@ -99,6 +81,8 @@ class BaseMMSDeployment(BaseDeployment):  # pylint: disable=too-few-public-metho
     """
     Common functionality for loading config, onnx, etc.
     """
+
+    _sampling_rate = 16000
 
     def _get_label2id(self) -> Dict[str, str]:
         """
@@ -181,13 +165,15 @@ class LangIdDeployment(BaseMMSDeployment):
         :param audio: A dict containing 'content' (raw bytes), 'filename', 'content_type'
         :return: Dict with key 'langid' e.g. {"langid": "fra"}
         """
-        audio_array = audio_processor(audio["content"])
+        audio_array = load_audio(audio["content"], self._sample_rate)
         if audio_array.shape[0] > self._sample_rate * 30:
             print("30 second limit exceeded, truncating audio")
             print("Change in code if this behaviour is not desired")
             audio_array = audio_array[: self._sample_rate * 30]
 
-        inputs = self._processor(audio_array, sampling_rate=16000, return_tensors="np")
+        inputs = self._processor(
+            audio_array, sampling_rate=self._sample_rate, return_tensors="np"
+        )
         input_name = self._onnx_model.get_inputs()[0].name
         input_array = inputs["input_values"].astype(np.float32)
 
@@ -280,8 +266,12 @@ class TranscriptionDeployment(BaseMMSDeployment):
         except KeyError:
             return {"error": f"No adapter found for '{language}'"}
 
-        audio_array = audio_processor(audio["content"])[: 30 * 16_000]
-        inputs = self._processor(audio_array, sampling_rate=16_000, return_tensors="pt")
+        audio_array = load_audio(audio["content"], sampling_rate=self._sampling_rate)[
+            : 30 * self._sampling_rate
+        ]
+        inputs = self._processor(
+            audio_array, sampling_rate=self._sampling_rate, return_tensors="pt"
+        )
 
         with torch.no_grad():
             logits = self._model(**inputs).logits
