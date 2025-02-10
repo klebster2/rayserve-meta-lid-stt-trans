@@ -1,11 +1,10 @@
-# Massively Multilingual Conversational AI
+# Ray Serve Meta Multilingual LID / STT / Translation tools
 
 **A Ray Serve-based microservice providing:**
 
 1. **Language Identification** for ~4,017 languages (via a quantized version of [MMS-LID](https://huggingface.co/facebook/mms-lid-4017)).
 2. **Speech-to-Text** for ~1,162 languages (via [MMS-1B-ALL](https://huggingface.co/facebook/mms-1b-all)).
 3. **Translation** for ~200 languages (via [NLLB-200-distilled-600M](https://huggingface.co/facebook/nllb-200-distilled-600M)).
-4. **Conversational Agents** coming soon
 
 This repository is inspired by Meta’s [Massively Multilingual Speech (MMS)](https://ai.facebook.com/research/publications/massively-multilingual-speech) and [No Language Left Behind (NLLB)](https://ai.facebook.com/research/no-language-left-behind/) initiatives. By combining these open-source models, the goal is to surface language technologies for diverse and low-resource languages.
 
@@ -78,8 +77,8 @@ This repository is inspired by Meta’s [Massively Multilingual Speech (MMS)](ht
 1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/klebster2/mms-conversational-ai
-   cd mms-conversational-ai
+   git clone https://github.com/klebster2/rayserve-meta-lid-stt-trans
+   cd rayserve-meta-lid-stt-trans
    ```
 
 2. **Set up a Python environment**:
@@ -95,7 +94,7 @@ This repository is inspired by Meta’s [Massively Multilingual Speech (MMS)](ht
 
 ### Running the Service
 
-1. **Start the Ray cluster** (optionally in a separate terminal):
+1. **Start the Ray cluster** in a separate terminal:
 
    ```bash
    ray start --head
