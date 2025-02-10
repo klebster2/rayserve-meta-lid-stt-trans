@@ -1,5 +1,5 @@
 """
-This is generic API for Language Identification, Speech-to-Text, and Translation for ~200 languages.
+This is generic API for Language Identification ~4017 languages, Speech-to-Text ~1162 languages, and Translation for ~200 languages.
 
 Code: Creative Commons CC0-1.0 license
 Models: CC-BY-NC-4.0 license (Meta)
@@ -50,13 +50,6 @@ def load_audio(file_bytes: bytes, sampling_rate: int) -> np.ndarray:
     """
     Convert raw audio bytes into a normalized float32 NumPy array,
     re-sampled to a single channel at the specified sampling rate.
-
-    >>> import numpy as np
-    >>> # We'll create a short RAW WAV buffer of 4 samples:
-    >>> dummy_data = (b"\\x00\\x01\\x00\\x02") * 100
-    >>> audio = load_audio(dummy_data, 16000)  # doctest: +SKIP
-    >>> isinstance(audio, np.ndarray)  # doctest: +SKIP
-    True
     """
     out, _ = (
         ffmpeg.input("pipe:", threads=0)
@@ -161,9 +154,6 @@ class LangIdDeployment(BaseMMSDeployment):
         """
         Run Language Identification on the input audio file.
         Cuts audio to 30s if longer.
-
-        :param audio: A dict containing 'content' (raw bytes), 'filename', 'content_type'
-        :return: Dict with key 'langid' e.g. {"langid": "fra"}
         """
         audio_array = load_audio(audio["content"], self._sample_rate)
         if audio_array.shape[0] > self._sample_rate * 30:
@@ -256,9 +246,6 @@ class TranscriptionDeployment(BaseMMSDeployment):
     def transcribe_audio(self, audio: Dict[str, Any], language: str) -> Dict[str, Any]:
         """
         Transcribe the input audio file.
-
-        :param audio: Dict containing 'content', 'filename', 'content_type'
-        :param language: 3-letter ISO code (if adapter found).
         """
         self._processor.tokenizer.set_target_lang(language)
         try:
@@ -436,10 +423,6 @@ class App:  # pylint: disable=too-few-public-methods
 def run_smoke_test_audio(file_url: str, endpoint: str, description: str = "") -> None:
     """
     Helper function to download a file, detect its MIME, and call the local endpoint.
-
-    :param file_url: URL to the audio file
-    :param endpoint: The local endpoint path, e.g. '/audio' or '/transcribe'
-    :param description: A label describing the file content
     """
     print(f"\n--- SMOKE TEST: {description} ---")
     tmp_name = file_url.split("/")[-1]
@@ -464,10 +447,6 @@ def run_smoke_test_text(
 ) -> None:
     """
     Helper function to call the local endpoint with a text input.
-    :param text: The text to translate
-    :param tgt_lang: The target language code, e.g. 'fra'
-    :param endpoint: The local endpoint path, e.g. /text/translation
-    :param description: A label describing the text content
     """
     print(f"\n--- SMOKE TEST: {description} ---")
     print("Translating text:", text)
