@@ -1,4 +1,4 @@
-name: mms-conversational-ai2
+name: rayserve-meta-lid-stt-trans
 channels:
   - defaults
   - conda-forge
