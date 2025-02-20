@@ -85,7 +85,7 @@ This repository is inspired by Meta’s [Massively Multilingual Speech (MMS)](ht
 
    ```bash
    conda env create -f environment.yml
-   conda activate
+   conda activate rayserve-meta-lid-stt-trans
    ```
 
 ---
