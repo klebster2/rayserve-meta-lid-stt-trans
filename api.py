@@ -82,7 +82,7 @@ class BaseMMSDeployment(BaseDeployment):  # pylint: disable=too-few-public-metho
         Download and parse the label->id mapping for MMS-LID 4017.
         """
         config_url = (
-            "https://huggingface.co/facebook/mms-lid-4017/resolve/main/config.json"
+            "https://huggingface.co/api/resolve-cache/models/facebook/mms-lid-4017/6adb04d61a52e5989b0e65f0d59d4755d81a94e3/config.json"
         )
         if not Path("id2label.json").exists():
             with httpx.Client() as client, open("id2label.json", "wb") as file:
