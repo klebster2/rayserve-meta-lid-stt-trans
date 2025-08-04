@@ -87,6 +87,7 @@ This repository is inspired by Meta’s [Massively Multilingual Speech (MMS)](ht
    conda env create -f environment.yml
    conda activate rayserve-meta-lid-stt-trans
    ```
+OR try winging it with `pip install -q ray torch torchaudio onnxruntime-gpu ffmpeg-python python-magic`
 
 ---
 
