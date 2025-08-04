@@ -468,42 +468,42 @@ if __name__ == "__main__":
             translation_responder=NLLBDeployment.bind(),  # pylint: disable=no-value-for-parameter,no-member
         )
     )
+    # Uncomment this block to start running smoke tests..
+    # ## Test 1: Simple French "merci" (should detect 'fra')
+    # run_smoke_test_audio(
+    #     "https://upload.wikimedia.org/wikipedia/commons/f/fa/Nl-merci.ogg",
+    #     LID_ENDPOINT,
+    #     description="French 'merci' language ID",
+    # )
 
-    ## Test 1: Simple French "merci" (should detect 'fra')
-    run_smoke_test_audio(
-        "https://upload.wikimedia.org/wikipedia/commons/f/fa/Nl-merci.ogg",
-        LID_ENDPOINT,
-        description="French 'merci' language ID",
-    )
+    # ## Test 2: buriat (expected 'bxm')
+    # run_smoke_test_audio(
+    #     "https://archive.phonetics.ucla.edu/Language/BXM/bxm_word-list_1991_01.mp3",
+    #     LID_ENDPOINT,
+    #     description="Buriat Mongolia Language word list language ID = BXM",
+    # )
 
-    ## Test 2: buriat (expected 'bxm')
-    run_smoke_test_audio(
-        "https://archive.phonetics.ucla.edu/Language/BXM/bxm_word-list_1991_01.mp3",
-        LID_ENDPOINT,
-        description="Buriat Mongolia Language word list language ID = BXM",
-    )
+    # ## Test 3: Gettysburg address (English) - Transcribe
+    # run_smoke_test_audio(
+    #     "https://www.cs.uic.edu/~troy/spring09/cs101/SoundFiles/gettysburg.wav",
+    #     TRANSCRIPTION_ENDPOINT,
+    #     description="Gettysburg address transcription",
+    # )
 
-    ## Test 3: Gettysburg address (English) - Transcribe
-    run_smoke_test_audio(
-        "https://www.cs.uic.edu/~troy/spring09/cs101/SoundFiles/gettysburg.wav",
-        TRANSCRIPTION_ENDPOINT,
-        description="Gettysburg address transcription",
-    )
+    # # Test 4: Yoruba (Nigeria) - Transcribe
+    # run_smoke_test_audio(
+    #     "https://archive.phonetics.ucla.edu/Language/YOR/yor_word-list_1972_02.mp3",
+    #     TRANSCRIPTION_ENDPOINT,
+    #     description="Yoruba language transcription",
+    # )
 
-    # Test 4: Yoruba (Nigeria) - Transcribe
-    run_smoke_test_audio(
-        "https://archive.phonetics.ucla.edu/Language/YOR/yor_word-list_1972_02.mp3",
-        TRANSCRIPTION_ENDPOINT,
-        description="Yoruba language transcription",
-    )
-
-    # Test 5: English to French translation
-    run_smoke_test_text(
-        "Hello, my name is John. I am a software Engineer from the United States.",
-        "fra",
-        TRANSLATION_ENDPOINT,
-        description="English text translation",
-    )
+    # # Test 5: English to French translation
+    # run_smoke_test_text(
+    #     "Hello, my name is John. I am a software Engineer from the United States.",
+    #     "fra",
+    #     TRANSLATION_ENDPOINT,
+    #     description="English text translation",
+    # )
 
     print("\nReady to accept requests...\n")
     while True:
