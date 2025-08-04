@@ -490,11 +490,11 @@ if __name__ == "__main__":
     #     description="Gettysburg address transcription",
     # )
 
-    # Test 4: Yoruba (Nigeria) - Transcribe
+    # Test 4: French - LangId and Transcribe of 'Un Bleu'
     run_smoke_test_audio(
-        "https://archive.phonetics.ucla.edu/Language/YOR/yor_word-list_1972_02.mp3",
+        "https://upload.wikimedia.org/wikipedia/commons/6/63/Fr-bleu.ogg",
         TRANSCRIPTION_ENDPOINT,
-        description="Yoruba language transcription",
+        description="French language transcription",
     )
 
     # # Test 5: English to French translation
@@ -505,6 +505,6 @@ if __name__ == "__main__":
     #     description="English text translation",
     # )
 
-    print("\nReady to accept requests...\n")
-    while True:
-        pass
+    # print("\nReady to accept requests...\n")
+    # while True:
+    #     pass
