@@ -490,12 +490,12 @@ if __name__ == "__main__":
     #     description="Gettysburg address transcription",
     # )
 
-    # # Test 4: Yoruba (Nigeria) - Transcribe
-    # run_smoke_test_audio(
-    #     "https://archive.phonetics.ucla.edu/Language/YOR/yor_word-list_1972_02.mp3",
-    #     TRANSCRIPTION_ENDPOINT,
-    #     description="Yoruba language transcription",
-    # )
+    # Test 4: Yoruba (Nigeria) - Transcribe
+    run_smoke_test_audio(
+        "https://archive.phonetics.ucla.edu/Language/YOR/yor_word-list_1972_02.mp3",
+        TRANSCRIPTION_ENDPOINT,
+        description="Yoruba language transcription",
+    )
 
     # # Test 5: English to French translation
     # run_smoke_test_text(
