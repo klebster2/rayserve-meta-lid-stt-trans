@@ -120,10 +120,10 @@ class BaseMMSDeployment(BaseDeployment):  # pylint: disable=too-few-public-metho
 @serve.deployment(
     ray_actor_options={"num_gpus": 0.1},
     autoscaling_config={
-        "max_replicas": 1,
+        "max_replicas": 2,
         "min_replicas": 0,
         "target_throughput": 1,
-        "max_concurrent_queries": 1,
+        "max_concurrent_queries": 2,
         "downscale_delay": 10, # aggressive downscale
     },
 )
@@ -224,10 +224,10 @@ async def analyze_audio_endpoint(
 @serve.deployment(
     ray_actor_options={"num_gpus": 0},  # TODO: use model.to("cuda") for GPU
     autoscaling_config={
-        "max_replicas": 1,
+        "max_replicas": 2,
         "min_replicas": 0,
         "target_throughput": 1,
-        "max_concurrent_queries": 1,
+        "max_concurrent_queries": 2,
         "downscale_delay": 10, # aggressive downscale
     },
 )
@@ -329,10 +329,10 @@ class TranslateResponse(BaseModel):  # pylint: disable=too-few-public-methods
 @serve.deployment(
     ray_actor_options={"num_gpus": 0.2},  # At most 0.2 (4.8GB) on an RTX 3090 (24GB)
     autoscaling_config={
-        "max_replicas": 1,
+        "max_replicas": 2,
         "min_replicas": 0,
         "target_throughput": 1,
-        "max_concurrent_queries": 1,
+        "max_concurrent_queries": 2,
         "downscale_delay": 10, # aggressive downscale
     },
 )
