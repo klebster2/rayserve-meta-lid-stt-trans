@@ -124,6 +124,7 @@ class BaseMMSDeployment(BaseDeployment):  # pylint: disable=too-few-public-metho
         "min_replicas": 0,
         "target_throughput": 1,
         "max_concurrent_queries": 1,
+        "downscale_delay": 10, # aggressive downscale
     },
 )
 class LangIdDeployment(BaseMMSDeployment):
@@ -227,6 +228,7 @@ async def analyze_audio_endpoint(
         "min_replicas": 0,
         "target_throughput": 1,
         "max_concurrent_queries": 1,
+        "downscale_delay": 10, # aggressive downscale
     },
 )
 class TranscriptionDeployment(BaseMMSDeployment):
@@ -331,6 +333,7 @@ class TranslateResponse(BaseModel):  # pylint: disable=too-few-public-methods
         "min_replicas": 0,
         "target_throughput": 1,
         "max_concurrent_queries": 1,
+        "downscale_delay": 10, # aggressive downscale
     },
 )
 class NLLBDeployment(BaseDeployment):
